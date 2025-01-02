@@ -15,7 +15,7 @@ RUN npm cache clean
 RUN npm install --verbose
 
 # Copy the rest of the application files
-COPY . .
+COPY . 
 
 # Expose the application port
 EXPOSE 4200
