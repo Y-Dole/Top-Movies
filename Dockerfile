@@ -1,9 +1,24 @@
-FROM node:6
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-COPY package.json /usr/src/app
+
+# Use a Node.js base image
+FROM node:14
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json to the container
+COPY package*.json ./
+
+#Clearing Cache
 RUN npm cache clean
-RUN npm install
-COPY . /usr/src/app
+
+# Install dependencies
+RUN npm install --verbose
+
+# Copy the rest of the application files
+COPY . .
+
+# Expose the application port
 EXPOSE 4200
-CMD ["npm","start"]
+
+# Start the application
+CMD ["npm", "start"]
