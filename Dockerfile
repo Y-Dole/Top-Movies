@@ -8,9 +8,6 @@ WORKDIR /app
 # Copy package.json and package-lock.json to the container
 COPY package*.json ./
 
-#Clearing Cache
-RUN npm cache clean
-
 # Install dependencies
 RUN npm install --verbose
 
